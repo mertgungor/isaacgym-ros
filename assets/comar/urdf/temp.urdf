@@ -1,0 +1,106 @@
+<!-- ================================================_LEG 4 - RR_======================================================== -->
+  <joint name="comar/abad_3_joint" type="revolute">
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.802851455917" upper="0.802851455917" velocity="52.4"/>
+    <origin rpy="0 0 0" xyz="-222.50e-3 65.50e-3 0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="comar/base_link"/>
+    <child link="comar/abad_3"/>
+  </joint>
+  <link name="comar/abad_3">
+    <inertial>
+      <origin xyz="0.011366 0.007729 0.0048783"/>
+      <mass value="0.696"/>
+      <inertia ixx="0.000469246" ixy="9.409e-06" ixz="3.42e-07" iyy="0.00080749" iyz="-4.66e-07" izz="0.000552929"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/ROBOT_ABDUCTION_HL.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/ROBOT_ABDUCTION_HL.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="comar/hip_3_joint" type="revolute">
+    <dynamics damping="0" friction="0"/>
+    <limit effort="55" lower="-1.0471975512" upper="4.18879020479" velocity="28.6"/>
+    <origin rpy="0 0 0" xyz="-0.07675 0.0155 0 "/>
+    <axis xyz="0 1 0"/>
+    <parent link="comar/abad_3"/>
+    <child link="comar/hip_3"/>
+  </joint>
+  <link name="comar/hip_3">
+    <inertial>
+      <origin xyz="-0.00309 0.05402 -0.02642"/>
+      <mass value="1.013"/>
+      <inertia ixx="0.005529065" ixy="4.825e-06" ixz="0.000343869" iyy="0.005139339" iyz="2.2448e-05" izz="0.001367788"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/ROBOT_HIP_L.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/ROBOT_HIP_L.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="comar/knee_3_joint" type="revolute">
+    <dynamics damping="0" friction="0"/>
+    <limit effort="55" lower="-2.69653369433" upper="-0.916297857297" velocity="28.6"/>
+    <origin rpy="0 0 0" xyz="0 0.08024 -0.2 "/>
+    <axis xyz="0 1 0"/>
+    <parent link="comar/hip_3"/>
+    <child link="comar/knee_3"/>
+  </joint>
+  <link name="comar/knee_3">
+    <inertial>
+      <origin xyz="0.00708 0.0009 0.13802"/>
+      <mass value="0.166"/>
+      <inertia ixx="0.002997972" ixy="0.0" ixz="-0.000141163" iyy="0.003014022" iyz="0.0" izz="3.2426e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/ROBOT_KNEE.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/ROBOT_KNEE.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="comar/foot_3_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.199696 "/>
+    <parent link="comar/knee_3"/>
+    <child link="comar/foot_3"/>
+  </joint>
+  <link name="comar/foot_3">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0"/>
+      <mass value="0.06"/>
+      <inertia ixx="9.6e-06" ixy="0.0" ixz="0.0" iyy="9.6e-06" iyz="0.0" izz="9.6e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/ROBOT_FOOT.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/ROBOT_FOOT.stl"/>
+      </geometry>
+    </collision>
+  </link>
